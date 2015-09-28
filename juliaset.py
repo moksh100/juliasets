@@ -48,7 +48,7 @@ class JuliaSet(object):
         w = numpy.array([]);
         for s in arr:
             g=q*s;
-            w= numpy.append(w,g+(g*1j));
+            w= numpy.append(w,g+(g*1j));   
         self._complexplane =w;
             
     def set_spacing(self, d):
