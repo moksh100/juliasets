@@ -42,7 +42,6 @@ class JuliaSet(object):
         else:
             increment = self._d;
         arr = numpy.arange(-2,2,increment);
-        elapsed = time.time() - start;
         q = numpy.ones(len(arr));
         w = numpy.array([]);
         for s in arr:
