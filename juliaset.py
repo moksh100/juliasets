@@ -41,18 +41,20 @@ class JuliaSet(object):
             increment = d;
         else:
             increment = self._d;
+    
         arr = numpy.arange(-2,2,increment);
+        numpy.append(arr,2);
         q = numpy.ones(len(arr));
         w = numpy.array([]);
         for s in arr:
             g=q*s;
-            w= numpy.append(w,g+(g*1j));   
+            w= numpy.append(w,g+(g*1j));
         self._complexplane =w;
-
             
     def set_spacing(self, d):
         self.setcomplexplane(d);
-
+        
+        
     def generate(self):
         f =numpy.vectorize(self.iterate);
         self.set =f(self._complexplane);
