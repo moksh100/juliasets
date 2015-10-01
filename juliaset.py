@@ -6,13 +6,13 @@ class JuliaSet(object):
   
     def __init__(self, c, n=100, _d=0.001):
         self.c=c;
-        self.set=numpy.array([]);
+        self.set=[];
         self._d=_d;
         if(n>0):
             self.n=n;
         else:
             print "Reset n to 100";
-        self._complexplane = numpy.array([]);
+        self._complexplane = [];
         
         
     def juliamap(self, z):
@@ -41,20 +41,22 @@ class JuliaSet(object):
             increment = d;
         else:
             increment = self._d;
-    
-        arr = numpy.arange(-2,2,increment);
-        numpy.append(arr,2);
-        q = numpy.ones(len(arr));
-        w = numpy.array([]);
-        for s in arr:
-            g=q*s;
-            w= numpy.append(w,g+(arr*1j));   
-        self._complexplane =w;
+            
+        x, y = -2, -2
+        self._complexplane = []
+        while (x <= 2):
+            y=-2
+            while(y<=2):
+                z = complex(x,y)
+                self._complexplane.append(z)
+                y = self._d + y
+            x = self._d + x
+
+
             
     def set_spacing(self, d):
         self.setcomplexplane(d);
-        
-        
+
     def generate(self):
         f =numpy.vectorize(self.iterate);
         self.set =f(self._complexplane);
